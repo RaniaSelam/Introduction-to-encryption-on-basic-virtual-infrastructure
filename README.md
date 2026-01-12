@@ -23,6 +23,8 @@
 This is a hands-on lab I built to practice real-world cybersecurity concepts in a controlled environment. Nothing fancy — just three virtual machines, each with a strict role, connected through a private network that no one can reach from the outside.
 
 The goal wasn't to build something complex. It was to build something <b>correct</b> — where every security decision has a reason, every layer compensates for the limits of the one before it, and compromising one machine doesn't mean game over.
+
+On top of the infrastructure, I also deployed a small AI-assisted incident qualification system, because why not put the whole thing to use 🙂
 </p>
 
 ---
@@ -48,7 +50,7 @@ The goal wasn't to build something complex. It was to build something <b>correct
     <tr>
       <td>⚙️ <b>App Server</b> (<code>momo</code>)</td>
       <td><code>192.168.56.30</code></td>
-      <td>Hosts the Flask API</td>
+      <td>Hosts the Flask API and the AI service</td>
     </tr>
     <tr>
       <td>🗄️ <b>Database</b> (<code>zizou</code>)</td>
@@ -79,6 +81,8 @@ secure-infra-lab/
 ├── tp1-infrastructure/      # Segmented network + SSH hardening + UFW firewall rules
 └── tp2-luks-encryption/     # LUKS disk encryption on the database server
 ```
+
+<p>Each part builds on the previous one. You can explore them independently, but they're designed to work together.</p>
 
 ---
 
