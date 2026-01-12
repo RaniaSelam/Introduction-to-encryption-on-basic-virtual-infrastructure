@@ -1,7 +1,7 @@
-<h1 align="center">🔐 Secure Infrastructure Lab</h1>
+<h1 align="center">🔐 Introduction to Data Encryption on Basic Virtual Infrastructure</h1>
 
 <p align="center">
-  <i>A simple 3-machine virtual lab — built to practice defense in depth, one layer at a time.</i>
+  <i>A simple 3-machine virtual lab — hardened access, encrypted storage, and layered defenses.</i>
 </p>
 
 <p align="center">
@@ -23,8 +23,6 @@
 This is a hands-on lab I built to practice real-world cybersecurity concepts in a controlled environment. Nothing fancy — just three virtual machines, each with a strict role, connected through a private network that no one can reach from the outside.
 
 The goal wasn't to build something complex. It was to build something <b>correct</b> — where every security decision has a reason, every layer compensates for the limits of the one before it, and compromising one machine doesn't mean game over.
-
-On top of the infrastructure, I also deployed a small AI-assisted incident qualification system, because why not put the whole thing to use 🙂
 </p>
 
 ---
@@ -50,7 +48,7 @@ On top of the infrastructure, I also deployed a small AI-assisted incident quali
     <tr>
       <td>⚙️ <b>App Server</b> (<code>momo</code>)</td>
       <td><code>192.168.56.30</code></td>
-      <td>Hosts the Flask API and the AI service</td>
+      <td>Hosts the Flask API</td>
     </tr>
     <tr>
       <td>🗄️ <b>Database</b> (<code>zizou</code>)</td>
@@ -79,11 +77,8 @@ The bastion is the <b>only machine with two network interfaces</b> — one facin
 ```
 secure-infra-lab/
 ├── tp1-infrastructure/      # Segmented network + SSH hardening + UFW firewall rules
-├── tp2-luks-encryption/     # LUKS disk encryption on the database server
-└── tp3-ai-soc-assistant/    # Expert system + AI layer for incident qualification
+└── tp2-luks-encryption/     # LUKS disk encryption on the database server
 ```
-
-<p>Each part builds on the previous one. You can explore them independently, but they're designed to work together.</p>
 
 ---
 
@@ -130,7 +125,7 @@ Cipher:   AES-XTS-plain64  (512-bit key)
 PBKDF:    Argon2id
 ```
 
-**Argon2id** is a memory-hard key derivation function — intentionally slow and RAM-intensive, which makes dictionary attacks very costly even with dedicated hardware.
+<p><b>Argon2id</b> is a memory-hard key derivation function — intentionally slow and RAM-intensive, which makes dictionary attacks very costly even with dedicated hardware.</p>
 
 <h4>What LUKS protects (and what it doesn't)</h4>
 
@@ -149,54 +144,6 @@ PBKDF:    Argon2id
 
 ---
 
-<h2>🤖 TP3 — AI-assisted SOC incident qualification</h2>
-
-<p align="center">
-  <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" width="180" alt="AI gif">
-</p>
-
-<p>
-This is where the infrastructure gets put to work. An incident qualification system is deployed on top of it — designed to assist a SOC analyst, not replace them.
-</p>
-
-<h4>The key design decision — why not just use an LLM?</h4>
-
-<p>
-In cybersecurity, decisions need to be <b>traceable, auditable, and explainable</b>. A standalone LLM is a black box — you can't explain why it classified something as critical, and it can hallucinate. So the architecture splits responsibilities:
-</p>
-
-<table>
-  <tr>
-    <td>🧠 <b>Decision</b></td>
-    <td>Deterministic expert system — rule-based, fully auditable, stored in PostgreSQL</td>
-  </tr>
-  <tr>
-    <td>💬 <b>Explanation</b></td>
-    <td>AI layer — explains the decision, proposes a checklist, asks follow-up questions</td>
-  </tr>
-</table>
-
-<p><b>The AI never touches the decision.</b> It only receives the output from the expert system and makes it human-readable.</p>
-
-<h4>How the pipeline works</h4>
-
-```
-[User describes an incident]
-         │
-         ▼
-[Flask API — port 8080, via bastion only]
-         │
-         ├──► [Expert system — PostgreSQL JSONB rules]
-         │           └──► severity + action  (fully deterministic)
-         │
-         └──► [AI service — port 9000, localhost only, never exposed]
-                     └──► explanation + checklist + follow-up questions
-```
-
-<p>32 rules cover the most common incident types. If multiple rules match, the most severe wins — conservative by design. If none match, the incident is flagged out-of-scope with no arbitrary decision made.</p>
-
----
-
 <h2>🧱 The full picture</h2>
 
 <p>Each layer covers a different threat. Together, they mean that getting through one component isn't enough to reach the data.</p>
@@ -211,7 +158,6 @@ In cybersecurity, decisions need to be <b>traceable, auditable, and explainable<
     <tr><td>Encryption in transit</td><td>TLS 1.3</td><td>Traffic sniffing between app and DB</td></tr>
     <tr><td>Encryption at rest</td><td>LUKS2 + AES-XTS</td><td>Physical theft of storage</td></tr>
     <tr><td>Intrusion detection</td><td>Fail2ban</td><td>SSH brute-force on the entry point</td></tr>
-    <tr><td>Traceability</td><td>History table + logs</td><td>Post-incident analysis and audit</td></tr>
   </tbody>
 </table>
 
