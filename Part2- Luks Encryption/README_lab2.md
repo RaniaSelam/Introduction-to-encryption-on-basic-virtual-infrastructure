@@ -1,8 +1,8 @@
 <h1 align="center">🔒 Lab 2 — LUKS Disk Encryption</h1>
+<div align="center">
+  <img src="./assets/robber-patrick-star-stealing-from-spongebob.gif" width="500" alt="infrastructure diagram">
+</div>
 
-<p align="center">
-  <img src="./assets/robber-patrick-star-stealing-from-spongebob.gif" width="200" alt="disk theft gif">
-</p>
 <p align="center">
   <i>Because network security alone isn't enough if someone can just walk away with the disk.🚶🏻‍♂️‍➡️🚶🏻‍♂️‍➡️</i>
 </p>
