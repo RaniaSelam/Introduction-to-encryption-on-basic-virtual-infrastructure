@@ -17,7 +17,7 @@
 
 ---
 
-<h2>👋 What is this?</h2>
+<h2> What is this?</h2>
 
 <p>
 This is a hands-on lab I built to practice some real-world cybersecurity concepts in a virtual environment. Nothing fancy, just three virtual machines, each with a strict role, connected through a private network.
@@ -43,36 +43,30 @@ Note: On top of this infrastructure, I also deployed a small AI-assisted inciden
   </thead>
   <tbody>
     <tr>
-      <td>🛡️ <b>Bastion</b> (<code>rano</code>)</td>
+      <td>🛡️ <b>Bastion</b> </td>
       <td><code>192.168.56.20</code></td>
-      <td>The only entry point — SSH hardened + fail2ban</td>
+      <td>The only entry point : SSH hardened + fail2ban</td>
     </tr>
     <tr>
-      <td>⚙️ <b>App Server</b> (<code>momo</code>)</td>
+      <td>⚙️ <b>App Server</b> </td>
       <td><code>192.168.56.30</code></td>
       <td>Hosts the Flask API and the AI service</td>
     </tr>
     <tr>
-      <td>🗄️ <b>Database</b> (<code>zizou</code>)</td>
+      <td>🗄️ <b>Database</b> </td>
       <td><code>192.168.56.40</code></td>
-      <td>PostgreSQL — most isolated machine, encrypted disk</td>
+      <td>PostgreSQL : most isolated machine, encrypted disk</td>
     </tr>
   </tbody>
 </table>
 
 <p>
-The bastion is the <b>only machine with two network interfaces</b> — one facing outward (NAT), one on the internal network (host-only). The app and database servers only have the internal interface and are never reachable directly from outside.
+The bastion is the <b>only machine with two network interfaces</b> : one facing outward (NAT), one on the internal network (host-only). The app and database servers only have the internal interface and are never reachable directly from outside.
 </p>
 
-```
-[You]
-  │
-  ▼  SSH
-[Bastion] ──► [App Server] ──► [Database]
-192.168.56.20   192.168.56.30   192.168.56.40
-```
-
----
+<div align="center">
+  <img src="./assets/diagram.png" width="700" alt="infrastructure diagram">
+</div>
 
 <h2>📦 What's in this repo</h2>
 
