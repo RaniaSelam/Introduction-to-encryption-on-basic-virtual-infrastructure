@@ -4,7 +4,7 @@
   <img src="https://media.tenor.com/zXV4M6xFh4oAAAAM/networking-i-am-networking.gif" width="200" alt="networking gif">
 </div>
 
-<h2>🎯 Goal</h2>
+<h2> Goal</h2>
 
 <p>
 Deploy a segmented 3-machine infrastructure, where each machine has a strict role and can only communicate with what it strictly needs. The focus is on <b>network architecture, SSH hardening, firewall rules, and encrypted communications</b>, not on application complexity.
