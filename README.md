@@ -94,9 +94,6 @@ secure-infra-lab/
 
 <h2>🔒 TP2 — LUKS disk encryption</h2>
 
-<p align="center">
-  <img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" width="180" alt="encryption gif">
-</p>
 
 <p>
 The threat scenario: someone copies the <code>.vdi</code> file (the VM's virtual disk) and analyzes it offline. Without encryption, every record in the database is readable. With LUKS, it's completely unreadable without the passphrase — even with direct access to the raw disk.
