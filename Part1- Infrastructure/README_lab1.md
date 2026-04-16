@@ -4,9 +4,6 @@
   <i>Three machines, one entry point, zero unnecessary exposure.</i>
 </p>
 
-<p align="center">
-  <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" width="200" alt="network gif">
-</p>
 
 ---
 
@@ -18,7 +15,7 @@ Design and deploy a segmented 3-machine infrastructure, where each machine has a
 
 ---
 
-<h2>🏗️ Architecture</h2>
+<h2> Architecture</h2>
 
 <p>All three machines run <b>Ubuntu Server 22.04 LTS</b> and are connected via a VirtualBox host-only network. The bastion is the only machine with two interfaces — one NAT for internet access, one host-only for the internal network. The app and database servers only have the internal interface and are never directly reachable from outside.</p>
 
