@@ -1,4 +1,4 @@
-<h1 align="center">🛡️ Lab 1 — Secure Virtualized Infrastructure</h1>
+<h1 align="center">🛡️ Part 1 — Network segmentation & SSH hardening</h1>
 
 <p align="center">
   <i>Three machines, one entry point, zero unnecessary exposure.</i>
@@ -7,7 +7,7 @@
 <h2>🎯 Goal</h2>
 
 <p>
-Design and deploy a segmented 3-machine infrastructure, where each machine has a strict role and can only communicate with what it strictly needs. The focus is on <b>network architecture, SSH hardening, firewall rules, and encrypted communications</b> — not on application complexity.
+Deploy a segmented 3-machine infrastructure, where each machine has a strict role and can only communicate with what it strictly needs. The focus is on <b>network architecture, SSH hardening, firewall rules, and encrypted communications</b>, not on application complexity.
 </p>
 
 
@@ -31,7 +31,7 @@ Design and deploy a segmented 3-machine infrastructure, where each machine has a
       <td><code>bastion</code></td>
       <td><code>rano</code></td>
       <td><code>192.168.56.20</code></td>
-      <td>Single entry point — SSH + fail2ban</td>
+      <td>Single entry point : SSH + fail2ban</td>
     </tr>
     <tr>
       <td> <b>App Server</b></td>
@@ -45,7 +45,7 @@ Design and deploy a segmented 3-machine infrastructure, where each machine has a
       <td><code>db</code></td>
       <td><code>zizou</code></td>
       <td><code>192.168.56.40</code></td>
-      <td>PostgreSQL 14 — most isolated machine</td>
+      <td>PostgreSQL 14 : most isolated machine</td>
     </tr>
   </tbody>
 </table>
@@ -57,16 +57,16 @@ Design and deploy a segmented 3-machine infrastructure, where each machine has a
     <tr><th>Machine</th><th>CPU</th><th>RAM</th><th>Disk</th></tr>
   </thead>
   <tbody>
-    <tr><td>Bastion</td><td>1 vCPU</td><td>2 GB</td><td>~20 GB</td></tr>
-    <tr><td>App</td><td>1 vCPU</td><td>2 GB</td><td>~20 GB</td></tr>
-    <tr><td>DB</td><td>1 vCPU</td><td>2 GB</td><td>~20 GB</td></tr>
+    <tr><td>Bastion</td><td>2 vCPU</td><td>3 GB</td><td>~30 GB</td></tr>
+    <tr><td>App</td><td>2 vCPU</td><td>3 GB</td><td>~30 GB</td></tr>
+    <tr><td>DB</td><td>2 vCPU</td><td>3 GB</td><td>~30 GB</td></tr>
   </tbody>
 </table>
 
-<h4>Deployment approach</h4>
+<h4>Deployment Approach</h4>
 
 <p>
-The bastion was set up first, then <b>cloned twice</b> to create the app and database servers. Each clone was then individually reconfigured: hostname, dedicated user, network interfaces (NAT removed on internal machines), and netplan config. This approach guaranteed a consistent base OS across all machines while saving deployment time.
+The bastion was set up first, then <b>cloned twice</b> to create the app and database servers. Each clone was then individually reconfigured: hostname, dedicated user, network interfaces and netplan config. This approach guaranteed a consistent base OS across all machines while saving deployment time.
 </p>
 
 
