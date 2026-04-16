@@ -89,7 +89,6 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
 
 > **Why TLS on an internal network?** VirtualBox's host-only network isn't encrypted. If someone compromises a VM and sniffs traffic, they see everything in plaintext without TLS. Defense in depth means not trusting the network even when it's yours.
 
----
 
 <h2> TP2 — LUKS disk encryption</h2>
 
@@ -127,7 +126,6 @@ PBKDF:    Argon2id
 
 <p>LUKS is one layer — not the whole answer.</p>
 
----
 
 <h2> The full picture</h2>
 
@@ -146,7 +144,6 @@ PBKDF:    Argon2id
   </tbody>
 </table>
 
----
 
 <h2>🛠️ Stack</h2>
 
