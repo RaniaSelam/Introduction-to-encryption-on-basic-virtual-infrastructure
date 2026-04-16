@@ -1,7 +1,7 @@
 <h1 align="center">🔒 Lab 2 — LUKS Disk Encryption</h1>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/RaniaSelam/Introduction-to-encryption-on-basic-virtual-infrastructure/master/assets/robber-patrick-star-stealing-from-spongebob.gif" width="500" alt="disk theft">
+  <img src="https://raw.githubusercontent.com/RaniaSelam/Introduction-to-encryption-on-basic-virtual-infrastructure/master/assets/robber-patrick-star-stealing-from-spongebob.gif" width="200" alt="disk theft">
 </div>
 
 <p align="center">
