@@ -5,7 +5,7 @@
 </div>
 
 <p align="center">
-  <i>Because network security alone isn't enough if someone can just walk away with the disk.🚶🏻‍♂️‍➡️🚶🏻‍♂️‍➡️</i>
+  <i>Because network security alone isn't enough if someone can just walk away with the disk.🚶🏻‍♂️‍➡️</i>
 </p>
 
 <h2>🎯 Goal</h2>
