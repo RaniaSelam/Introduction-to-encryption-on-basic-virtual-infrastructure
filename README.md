@@ -39,17 +39,17 @@ Note: On top of this infrastructure, I also deployed a small AI-assisted inciden
   </thead>
   <tbody>
     <tr>
-      <td>🛡️ <b>Bastion</b> </td>
+      <td> <b>Bastion</b> </td>
       <td><code>192.168.56.20</code></td>
       <td>The only entry point : SSH hardened + fail2ban</td>
     </tr>
     <tr>
-      <td>⚙️ <b>App Server</b> </td>
+      <td> <b>App Server</b> </td>
       <td><code>192.168.56.30</code></td>
       <td>Hosts the Flask API and the AI service</td>
     </tr>
     <tr>
-      <td>🗄️ <b>Database</b> </td>
+      <td> <b>Database</b> </td>
       <td><code>192.168.56.40</code></td>
       <td>PostgreSQL : most isolated machine, encrypted disk</td>
     </tr>
