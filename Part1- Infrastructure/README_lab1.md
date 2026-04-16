@@ -4,16 +4,12 @@
   <i>Three machines, one entry point, zero unnecessary exposure.</i>
 </p>
 
-
----
-
 <h2>🎯 Goal</h2>
 
 <p>
 Design and deploy a segmented 3-machine infrastructure, where each machine has a strict role and can only communicate with what it strictly needs. The focus is on <b>network architecture, SSH hardening, firewall rules, and encrypted communications</b> — not on application complexity.
 </p>
 
----
 
 <h2> Architecture</h2>
 
