@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/built%20with-VirtualBox-183A61?style=flat-square&logo=virtualbox&logoColor=white"/>
   <img src="https://img.shields.io/badge/OS-Ubuntu%2022.04-E95420?style=flat-square&logo=ubuntu&logoColor=white"/>
   <img src="https://img.shields.io/badge/DB-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white"/>
-  <img src="https://img.shields.io/badge/made%20with-curiosity%20%26%20stubbornness-ff6b6b?style=flat-square"/>
+  <img src="https://img.shields.io/badge/made%20with-curiosity%20%26%20-ff6b6b?style=flat-square"/>
 </p>
 
 <h2> What is it? </h2>
