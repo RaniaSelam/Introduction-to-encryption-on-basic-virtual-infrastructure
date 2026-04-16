@@ -68,8 +68,8 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
 
 ```
 secure-infra-lab/
-├── tp1-infrastructure/      # Segmented network + SSH hardening + UFW firewall rules
-└── tp2-luks-encryption/     # LUKS disk encryption on the database server
+├── 1-infrastructure/      -> Segmented network + SSH hardening + UFW firewall rules
+└── 2-luks-encryption/     -> LUKS disk encryption on the database server
 ```
 
 <p>Each part builds on the previous one. You can explore them independently, but they're designed to work together.</p>
