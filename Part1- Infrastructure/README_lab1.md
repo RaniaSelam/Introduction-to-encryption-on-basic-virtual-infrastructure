@@ -69,13 +69,9 @@ Design and deploy a segmented 3-machine infrastructure, where each machine has a
 The bastion was set up first, then <b>cloned twice</b> to create the app and database servers. Each clone was then individually reconfigured: hostname, dedicated user, network interfaces (NAT removed on internal machines), and netplan config. This approach guaranteed a consistent base OS across all machines while saving deployment time.
 </p>
 
----
 
 <h2> SSH hardening</h2>
 
-<p align="center">
-  <img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" width="180" alt="ssh gif">
-</p>
 
 <p>All administrative access goes through SSH. Password authentication was disabled from the start — no exceptions.</p>
 
