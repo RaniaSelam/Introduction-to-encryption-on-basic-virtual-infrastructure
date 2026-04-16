@@ -74,7 +74,7 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
 <p>Each part builds on the previous one. You can explore them independently, but they're designed to work together.</p>
 
 
-<h2>🔑 TP1 — Network segmentation & SSH hardening</h2>
+<h2> TP1 — Network segmentation & SSH hardening</h2>
 
 <p>The basics — but done properly.</p>
 
@@ -91,7 +91,7 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
 
 ---
 
-<h2>🔒 TP2 — LUKS disk encryption</h2>
+<h2> TP2 — LUKS disk encryption</h2>
 
 
 <p>
