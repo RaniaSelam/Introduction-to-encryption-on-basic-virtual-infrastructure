@@ -1,7 +1,7 @@
-<h1 align="center">🔐 Introduction to Data Encryption on Basic Virtual Infrastructure</h1>
+<h1 align="center">🔐 Introduction to Data Encryption on Basic Virtual Infrastructure 🔐</h1>
 
 <p align="center">
-  <i>A simple 3-machine virtual lab — hardened access, encrypted storage, and layered defenses.</i>
+  <i>A simple 3-machine virtual lab exploring SSH hardening, disk encryption, basic network segmentation and encrypted communications.</i>
 </p>
 
 <p align="center">
@@ -20,16 +20,16 @@
 <h2>👋 What is this?</h2>
 
 <p>
-This is a hands-on lab I built to practice real-world cybersecurity concepts in a controlled environment. Nothing fancy — just three virtual machines, each with a strict role, connected through a private network that no one can reach from the outside.
+This is a hands-on lab I built to practice some real-world cybersecurity concepts in a virtual environment. Nothing fancy, just three virtual machines, each with a strict role, connected through a private network.
 
-The goal wasn't to build something complex. It was to build something <b>correct</b> — where every security decision has a reason, every layer compensates for the limits of the one before it, and compromising one machine doesn't mean game over.
+The goal wasn't to build something complex. It was to build something <b>correct</b>, where every security decision can be explained, and compromising one machine wouldn't automatically mean game over.
 
-On top of the infrastructure, I also deployed a small AI-assisted incident qualification system, because why not put the whole thing to use 🙂
+Note: On top of this infrastructure, I also deployed a small AI-assisted incident qualification system, hosted on the app server, because why not put the whole thing to use 🤷🏻‍♀️ I'd like to go further with it, so it'll be detailed in a separate project! 🙂
+
 </p>
 
----
 
-<h2>🏗️ The infrastructure at a glance</h2>
+<h2> The infrastructure at a glance 👁️ </h2>
 
 <p>Three machines, each with one job:</p>
 
@@ -87,10 +87,6 @@ secure-infra-lab/
 ---
 
 <h2>🔑 TP1 — Network segmentation & SSH hardening</h2>
-
-<p align="center">
-  <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" width="180" alt="network gif">
-</p>
 
 <p>The basics — but done properly.</p>
 
