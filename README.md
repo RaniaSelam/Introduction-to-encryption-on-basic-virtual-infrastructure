@@ -22,7 +22,7 @@ This is a hands-on lab I built to practice some real-world cybersecurity concept
 
 The goal wasn't to build something complex. It was to build something correct, where every security decision can be explained, and compromising one machine wouldn't automatically mean game over.
 
-Note: On top of this infrastructure, I also deployed a small AI-assisted incident qualification system, hosted on the app server, because why not put the whole thing to use 🤷🏻‍♀️ I'd like to go further with it, so it'll be detailed in a separate project! 🙂
+Note: On top of this infrastructure, I also deployed a small AI-assisted incident qualification system, hosted on the app server, because why not put the whole thing to use 🤷🏻‍♀️ I'd like to go further with it, so it'll be detailed in a separate project! 
 </p>
 
 <h2> The infrastructure at a glance 👁️ </h2>
