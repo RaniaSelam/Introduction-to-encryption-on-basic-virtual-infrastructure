@@ -119,7 +119,7 @@ PBKDF:    Argon2id
     <td>Theft of the VM, offline disk analysis, physical access to storage</td>
   </tr>
   <tr>
-    <td> <b>! Does NOT protect against</b></td>
+    <td> <b>! Does NOT protect against !</b></td>
     <td>Network attacks, app vulnerabilities, or a legitimate user with elevated privileges</td>
   </tr>
 </table>
@@ -150,7 +150,3 @@ PBKDF:    Argon2id
 <p>
 <code>VirtualBox</code> · <code>Ubuntu 22.04</code> · <code>PostgreSQL 14</code> · <code>Flask</code> · <code>UFW</code> · <code>fail2ban</code> · <code>LUKS2</code> · <code>cryptsetup</code> · <code>Nginx</code> · <code>OpenSSH</code> · <code>ED25519</code>
 </p>
-
----
-
-<p align="center"><i>Built at Guardia Cybersecurity School ✨</i></p>
