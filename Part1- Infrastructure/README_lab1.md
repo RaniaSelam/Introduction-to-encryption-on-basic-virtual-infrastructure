@@ -27,21 +27,21 @@ Design and deploy a segmented 3-machine infrastructure, where each machine has a
   </thead>
   <tbody>
     <tr>
-      <td>🛡️ <b>Bastion</b></td>
+      <td> <b>Bastion</b></td>
       <td><code>bastion</code></td>
       <td><code>rano</code></td>
       <td><code>192.168.56.20</code></td>
       <td>Single entry point — SSH + fail2ban</td>
     </tr>
     <tr>
-      <td>⚙️ <b>App Server</b></td>
+      <td> <b>App Server</b></td>
       <td><code>app</code></td>
       <td><code>momo</code></td>
       <td><code>192.168.56.30</code></td>
       <td>Nginx + Flask API</td>
     </tr>
     <tr>
-      <td>🗄️ <b>Database</b></td>
+      <td> <b>Database</b></td>
       <td><code>db</code></td>
       <td><code>zizou</code></td>
       <td><code>192.168.56.40</code></td>
