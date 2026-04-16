@@ -15,7 +15,7 @@
   <img src="https://img.shields.io/badge/made%20with-curiosity%20%26%20stubbornness-ff6b6b?style=flat-square"/>
 </p>
 
-<h2> What is it? </h2>h2>
+<h2> What is it? </h2>
 <p>
   
 This is a hands-on lab I built to practice some real-world cybersecurity concepts in a virtual environment. Nothing fancy, just three virtual machines, each with a strict role, connected through a private network.
