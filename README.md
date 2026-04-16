@@ -119,7 +119,7 @@ PBKDF:    Argon2id
     <td>Theft of the VM, offline disk analysis, physical access to storage</td>
   </tr>
   <tr>
-    <td> <b>Does NOT protect against</b></td>
+    <td> <b>! Does NOT protect against</b></td>
     <td>Network attacks, app vulnerabilities, or a legitimate user with elevated privileges</td>
   </tr>
 </table>
