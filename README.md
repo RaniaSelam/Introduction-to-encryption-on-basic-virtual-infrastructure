@@ -71,7 +71,7 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
   <li><a href="./Part2-luks-encryption/README.md"> Part2 — LUKS disk encryption</a></li>
 </ul>
 
-<p>Each part builds on the previous one. You can explore them independently, but they're designed to work together.</p>
+<p>Each part builds on the previous one. You can explore them independently, but they're designed to work together. 👭🏻 </p>
 
 
 <h2> Part1 : Network segmentation & SSH hardening</h2>
