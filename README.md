@@ -1,4 +1,4 @@
-<h1 align="center">🔐 Introduction to Data Encryption on Basic Virtual Infrastructure 🔐</h1>
+<h1 align="center"> Introduction to Data Encryption on Basic Virtual Infrastructure </h1>
 
 <p align="center">
   <i>A simple 3-machine virtual lab exploring SSH hardening, disk encryption, basic network segmentation and encrypted communications.</i>
