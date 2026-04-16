@@ -1,8 +1,8 @@
 <h1 align="center">🛡️ Part 1 — Network segmentation & SSH hardening</h1>
 
-<p align="center">
-  <i>Three machines, one entry point, zero unnecessary exposure.</i>
-</p>
+<div align="center">
+  <img src="https://media.tenor.com/zXV4M6xFh4oAAAAM/networking-i-am-networking.gif" width="300" alt="networking gif">
+</div>
 
 <h2>🎯 Goal</h2>
 
