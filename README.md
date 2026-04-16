@@ -74,20 +74,20 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
 <p>Each part builds on the previous one. You can explore them independently, but they're designed to work together.</p>
 
 
-<h2> TP1 — Network segmentation & SSH hardening</h2>
+<h2> TP1 : Network segmentation & SSH hardening</h2>
 
-<p>The basics — but done properly.</p>
+<p>The basics </p>
 
 <ul>
-  <li><b>ED25519 keys only</b> — no passwords, no brute-force possible</li>
-  <li><b>Distinct key pairs per relationship</b> — bastion→app and app→db each have their own key. If one is stolen, the rest of the chain stays safe.</li>
+  <li><b>ED25519 keys only</b> ; no passwords, no brute-force possible</li>
+  <li><b>Distinct key pairs per relationship</b> ; bastion→app and app→db each have their own key. If one is stolen, the rest of the chain stays safe.</li>
   <li><b>Root login disabled</b> everywhere</li>
-  <li><b>UFW rules per machine</b> — each machine only accepts what it strictly needs. The database accepts connections from the app server only. Nothing else.</li>
-  <li><b>Fail2ban on the bastion</b> — the only machine exposed to the outside. It auto-bans IPs that generate too many failed login attempts.</li>
-  <li><b>TLS 1.3</b> between the app server and the database — traffic is encrypted in transit even on the internal network.</li>
+  <li><b>UFW rules per machine</b> ; each machine only accepts what it strictly needs. The database accepts connections from the app server only. Nothing else.</li>
+  <li><b>Fail2ban on the bastion</b> ; the only machine exposed to the outside. It auto-bans IPs that generate too many failed login attempts.</li>
+  <li><b>TLS 1.3</b> between the app server and the database ; traffic is encrypted in transit even on the internal network.</li>
 </ul>
 
-> **Why TLS on an internal network?** VirtualBox's host-only network isn't encrypted. If someone compromises a VM and sniffs traffic, they see everything in plaintext without TLS. Defense in depth means not trusting the network even when it's yours.
+> **Why TLS on an internal network?** VirtualBox's host-only network isn't encrypted. If someone compromises a VM and sniffs traffic, they see everything in plaintext without TLS (try it with Wireshark), means not trusting the network even when it's yours.
 
 
 <h2> TP2 — LUKS disk encryption</h2>
