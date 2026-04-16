@@ -1,7 +1,7 @@
 <h1 align="center">🛡️ Part 1 — Network segmentation & SSH hardening</h1>
 
 <div align="center">
-  <img src="https://media.tenor.com/zXV4M6xFh4oAAAAM/networking-i-am-networking.gif" width="100" alt="networking gif">
+  <img src="https://media.tenor.com/zXV4M6xFh4oAAAAM/networking-i-am-networking.gif" width="200" alt="networking gif">
 </div>
 
 <h2>🎯 Goal</h2>
