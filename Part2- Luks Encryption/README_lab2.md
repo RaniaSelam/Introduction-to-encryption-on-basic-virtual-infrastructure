@@ -1,4 +1,4 @@
-<h1 align="center">🔒 Lab 2 — LUKS Disk Encryption</h1>
+<h1 align="center">🔒 Lab 2 : LUKS Disk Encryption</h1>
 
 <br><br>
 
