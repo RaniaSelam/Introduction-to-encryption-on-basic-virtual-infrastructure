@@ -99,7 +99,7 @@ App Server        ──(key_db)───────► Database
 
 ---
 
-<h2> Firewall (UFW) — per-machine rules</h2>
+<h2> Firewall (UFW) : per-machine rules</h2>
 
 <p>Default policy on every machine: <b>deny incoming, allow outgoing</b>. Only strictly necessary flows are opened, adapted to each machine's role.</p>
 
@@ -108,7 +108,7 @@ App Server        ──(key_db)───────► Database
   <li>SSH incoming from the admin workstation only (<code>192.168.56.10</code>)</li>
   <li>SSH outgoing to the app server</li>
   <li>Everything else blocked</li>
-  <li>IPv6 disabled — unused, reduces attack surface</li>
+  <li>IPv6 disabled : unused, reduces attack surface</li>
 </ul>
 
 <h4>App Server</h4>
@@ -122,7 +122,7 @@ App Server        ──(key_db)───────► Database
 <ul>
   <li>PostgreSQL port 5432 from the app server only (<code>192.168.56.30</code>)</li>
   <li>SSH from the app server only</li>
-  <li>Nothing else — most isolated machine in the infrastructure</li>
+  <li>Nothing else, has to be the most isolated machine in the infrastructure</li>
 </ul>
 
 > **Why no direct SSH from bastion to DB?** The database is the most critical machine. Forcing the path bastion → app → db adds one more barrier. An attacker who compromises the bastion still can't reach the database directly.
@@ -132,7 +132,7 @@ App Server        ──(key_db)───────► Database
 <h2>🚫 Fail2ban</h2>
 
 <p>
-Installed <b>only on the bastion</b> — it's the only machine exposed to the outside. Fail2ban monitors SSH logs and automatically bans IPs that generate too many failed login attempts.
+Installed <b>only on the bastion</b>, it's the only machine exposed to the outside. Fail2ban monitors SSH logs and automatically bans IPs that generate too many failed login attempts.
 </p>
 
 <p>Even with password auth disabled, it limits noise and random key attempts. The SSH jail was verified active with <code>fail2ban-client status sshd</code>.</p>
@@ -148,14 +148,6 @@ Communications between the app server and the database are encrypted with <b>TLS
 <p>A dedicated application user <code>appuser</code> was created with only the rights needed — no superuser access.</p>
 
 > **Why TLS on an internal network?** VirtualBox's host-only network isn't encrypted. If someone compromises a VM and sniffs traffic, everything is visible in plaintext without TLS. Defense in depth means not trusting the network even when it's yours.
-
-
-
-<h2> Challenges encountered</h2>
-
-<p><b>PostgreSQL not reachable from the network after cluster recreation</b> — by default PostgreSQL only listens on <code>127.0.0.1</code>. Fixed by updating <code>listen_addresses</code> in <code>postgresql.conf</code> and adding a rule in <code>pg_hba.conf</code> to allow the app server's IP.</p>
-
-<p><b>VM cloning and reconfiguration</b> — after cloning, each machine needed its hostname, user, network interfaces, and netplan config individually adjusted. The NAT interface had to be removed from the internal machines.</p>
 
 
 
