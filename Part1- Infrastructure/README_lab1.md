@@ -127,7 +127,7 @@ App Server        ──(key_db)───────► Database
 
 > **Why no direct SSH from bastion to DB?** The database is the most critical machine. Forcing the path bastion → app → db adds one more barrier. An attacker who compromises the bastion still can't reach the database directly.
 
----
+
 
 <h2>🚫 Fail2ban</h2>
 
@@ -137,7 +137,7 @@ Installed <b>only on the bastion</b> — it's the only machine exposed to the ou
 
 <p>Even with password auth disabled, it limits noise and random key attempts. The SSH jail was verified active with <code>fail2ban-client status sshd</code>.</p>
 
----
+
 
 <h2> TLS 1.3 — encryption in transit</h2>
 
@@ -149,7 +149,7 @@ Communications between the app server and the database are encrypted with <b>TLS
 
 > **Why TLS on an internal network?** VirtualBox's host-only network isn't encrypted. If someone compromises a VM and sniffs traffic, everything is visible in plaintext without TLS. Defense in depth means not trusting the network even when it's yours.
 
----
+
 
 <h2> Challenges encountered</h2>
 
@@ -157,6 +157,6 @@ Communications between the app server and the database are encrypted with <b>TLS
 
 <p><b>VM cloning and reconfiguration</b> — after cloning, each machine needed its hostname, user, network interfaces, and netplan config individually adjusted. The NAT interface had to be removed from the internal machines.</p>
 
----
+
 
 <p align="center"><i>← <a href="../README.md">Back to main README</a> · <a href="../2-%20Luks%20Encryption/README.md">Lab 2 — LUKS Encryption →</a></i></p>
