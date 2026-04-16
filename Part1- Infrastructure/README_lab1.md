@@ -71,7 +71,7 @@ The bastion was set up first, then <b>cloned twice</b> to create the app and dat
 
 ---
 
-<h2>🔑 SSH hardening</h2>
+<h2> SSH hardening</h2>
 
 <p align="center">
   <img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" width="180" alt="ssh gif">
@@ -103,7 +103,7 @@ App Server        ──(key_db)───────► Database
 
 ---
 
-<h2>🧱 Firewall (UFW) — per-machine rules</h2>
+<h2> Firewall (UFW) — per-machine rules</h2>
 
 <p>Default policy on every machine: <b>deny incoming, allow outgoing</b>. Only strictly necessary flows are opened, adapted to each machine's role.</p>
 
@@ -143,7 +143,7 @@ Installed <b>only on the bastion</b> — it's the only machine exposed to the ou
 
 ---
 
-<h2>🔐 TLS 1.3 — encryption in transit</h2>
+<h2> TLS 1.3 — encryption in transit</h2>
 
 <p>
 Communications between the app server and the database are encrypted with <b>TLS 1.3</b>. PostgreSQL was chosen over MySQL specifically for its <b>native TLS support</b> — no external configuration needed.
@@ -155,7 +155,7 @@ Communications between the app server and the database are encrypted with <b>TLS
 
 ---
 
-<h2>⚠️ Challenges encountered</h2>
+<h2> Challenges encountered</h2>
 
 <p><b>PostgreSQL not reachable from the network after cluster recreation</b> — by default PostgreSQL only listens on <code>127.0.0.1</code>. Fixed by updating <code>listen_addresses</code> in <code>postgresql.conf</code> and adding a rule in <code>pg_hba.conf</code> to allow the app server's IP.</p>
 
