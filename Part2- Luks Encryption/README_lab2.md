@@ -10,7 +10,7 @@
   <i>Because network security alone isn't enough if someone can just walk away with the disk.🚶🏻‍♂️‍➡️</i>
 </p>
 
-<h2>🎯 Goal</h2>
+<h2> Goal</h2>
 
 <p>
 Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab 1. The target is the database server — identified as the most critical asset — using LUKS disk encryption on a dedicated secondary disk.
