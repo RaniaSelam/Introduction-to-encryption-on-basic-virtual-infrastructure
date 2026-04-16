@@ -133,7 +133,7 @@ PBKDF:    Argon2id
 
 ---
 
-<h2>🧱 The full picture</h2>
+<h2> The full picture</h2>
 
 <p>Each layer covers a different threat. Together, they mean that getting through one component isn't enough to reach the data.</p>
 
