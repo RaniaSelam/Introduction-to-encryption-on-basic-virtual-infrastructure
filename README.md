@@ -65,7 +65,7 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
 </p>
 
 <div align="center">
-  <img src="./assets/diagram.png" width="700" alt="infrastructure diagram">
+  <img src="./assets/diagram.png" width="500" alt="infrastructure diagram">
 </div>
 
 <h2>📦 What's in this repo</h2>
