@@ -101,31 +101,6 @@ The threat scenario: someone copies the <code>.vdi</code> file (the VM's virtual
 Rather than encrypting the entire system disk (complex, risky on an existing VM), a <b>dedicated secondary disk</b> was added to the database VM and encrypted with LUKS. This disk stores only the PostgreSQL data directory —> clean, targeted, easy to audit.
 </p>
 
-<h4>Cryptographic parameters</h4>
-
-```
-Format:   LUKS2
-Cipher:   AES-XTS-plain64  (512-bit key)
-PBKDF:    Argon2id
-```
-
-<p><b>Argon2id</b> is a memory-hard key derivation function : intentionally slow and RAM-intensive, which makes dictionary attacks very costly even with dedicated hardware.</p>
-
-<h4>What LUKS protects (and what it doesn't)</h4>
-
-<table>
-  <tr>
-    <td> <b>Protects against</b></td>
-    <td>Theft of the VM, offline disk analysis, physical access to storage</td>
-  </tr>
-  <tr>
-    <td> <b>! Does NOT protect against !</b></td>
-    <td>Network attacks, app vulnerabilities, or a legitimate user with elevated privileges</td>
-  </tr>
-</table>
-
-<p>LUKS is one layer, not the whole answer.</p>
-
 
 <h2> The full picture</h2>
 
