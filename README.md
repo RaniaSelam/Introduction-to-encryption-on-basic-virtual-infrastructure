@@ -66,11 +66,8 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
 
 <h2> What's in this repo</h2>
 
-```
-secure-infra-lab/
-├── 1-infrastructure/      -> Segmented network + SSH hardening + UFW firewall rules
-└── 2-luks-encryption/     -> LUKS disk encryption on the database server
-```
+<a href="./1- Infrastructure/README.md">
+<a href="./2- Luks Encryption/README.md">
 
 <p>Each part builds on the previous one. You can explore them independently, but they're designed to work together.</p>
 
