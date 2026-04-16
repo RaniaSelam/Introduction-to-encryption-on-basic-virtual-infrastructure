@@ -1,6 +1,6 @@
 <h1 align="center">🔒 Lab 2 — LUKS Disk Encryption</h1>
 <div align="center">
-  <img src="./assets/robber-patrick-star-stealing-from-spongebob.gif" width="500" alt="infrastructure diagram">
+  <img src="../assets/robber-patrick-star-stealing-from-spongebob.gif" width="500" alt="infrastructure diagram">
 </div>
 
 <p align="center">
