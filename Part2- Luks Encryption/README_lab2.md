@@ -13,7 +13,7 @@
 <h2> Goal</h2>
 
 <p>
-Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab 1. The target is the database server — identified as the most critical asset — using LUKS disk encryption on a dedicated secondary disk.
+Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab 1. The target is the database server, identified as the most critical asset, using LUKS disk encryption on a dedicated secondary disk.
 </p>
 
 <h2> Risk analysis first</h2>
@@ -27,7 +27,7 @@ Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab
   <li>offline analysis of disk content</li>
 </ul>
 
-<p>In this scenario, all the network security mechanisms from Lab 1 (firewall, SSH, TLS) become <b>completely ineffective</b> — the attacker isn't attacking a running system, they're reading the raw storage directly.</p>
+<p>In this scenario, all the network security mechanisms from Lab 1 (firewall, SSH, TLS) become <b>completely ineffective</b>, the attacker isn't attacking a running system, they're reading the raw storage directly.</p>
 
 <h4>Why the database and not the other machines?</h4>
 
@@ -39,7 +39,7 @@ Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab
     <tr>
       <td> Bastion</td>
       <td>SSH config, logs</td>
-      <td>Low data impact — reconstructible</td>
+      <td>Low data impact, reconstructible</td>
     </tr>
     <tr>
       <td> App Server</td>
@@ -49,21 +49,21 @@ Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab
     <tr>
       <td> <b>Database</b></td>
       <td><b>Persistent data, potentially sensitive</b></td>
-      <td><b>Irreversible — data is gone</b></td>
+      <td><b>Irreversible, data is gone</b></td>
     </tr>
   </tbody>
 </table>
 
 <p>The database was the clear priority. The bastion was also used as a test machine to validate the approach before applying it to the most critical component.</p>
 
-<h2> Architecture choice — selective encryption</h2>
+<h2> Architecture choice : selective encryption</h2>
 
 <p>Three approaches were considered:</p>
 
 <ul>
-  <li><b>Full system disk encryption</b> — maximum protection, but heavy to set up on an existing VM and complex to recover from</li>
+  <li><b>Full system disk encryption</b> : maximum protection, but heavy to set up on an existing VM and complex to recover from</li>
   <li><b>Selective encryption on a dedicated partition</b> ← chosen approach</li>
-  <li><b>Hybrid</b> — mix of encrypted and non-encrypted partitions</li>
+  <li><b>Hybrid</b> : mix of encrypted and non-encrypted partitions</li>
 </ul>
 
 <p>A <b>secondary disk was added to the database VM</b> and encrypted with LUKS. This disk stores only the PostgreSQL data directory (<code>/var/lib/postgresql</code>).</p>
@@ -72,7 +72,7 @@ Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab
 <ul>
   <li>No modification to the existing OS</li>
   <li>Limited blast radius if something goes wrong during setup</li>
-  <li>Easier to audit — the encryption boundary is explicit and clean</li>
+  <li>Easier to audit : the encryption boundary is explicit and clean</li>
 </ul>
 
 ---
@@ -102,9 +102,9 @@ LUKS sits between the physical disk and the filesystem. When the VM starts, an a
 <h2>🗝️ Key management</h2>
 
 <ul>
-  <li><b>Two LUKS key slots configured</b> — a main passphrase for daily use, and a recovery key in case the main one is lost</li>
-  <li><b>LUKS header backed up externally</b> — the header contains all cryptographic metadata. If it's corrupted or lost, the data becomes permanently inaccessible even with the correct passphrase. Its backup is critical.</li>
-  <li><b>Manual decryption at startup</b> — intentional. The volume stays locked after every reboot until an administrator explicitly unlocks it.</li>
+  <li><b>Two LUKS key slots configured</b> —> a main passphrase for daily use, and a recovery key in case the main one is lost</li>
+  <li><b>LUKS header backed up externally</b> —> the header contains all cryptographic metadata. If it's corrupted or lost, the data becomes permanently inaccessible even with the correct passphrase. Its backup is critical.</li>
+  <li><b>Manual decryption at startup</b> —> intentional. The volume stays locked after every reboot until an administrator explicitly unlocks it.</li>
 </ul>
 
 <h4>Startup procedure after reboot</h4>
