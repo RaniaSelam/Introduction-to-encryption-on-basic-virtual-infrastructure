@@ -74,7 +74,7 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
 <p>Each part builds on the previous one. You can explore them independently, but they're designed to work together.</p>
 
 
-<h2> TP1 : Network segmentation & SSH hardening</h2>
+<h2> Part1 : Network segmentation & SSH hardening</h2>
 
 <p>The basics </p>
 
@@ -84,21 +84,21 @@ The bastion is the <b>only machine with two network interfaces</b> : one facing 
   <li><b>Root login disabled</b> everywhere</li>
   <li><b>UFW rules per machine</b> : each machine only accepts what it strictly needs. The database accepts connections from the app server only. Nothing else.</li>
   <li><b>Fail2ban on the bastion</b> : the only machine exposed to the outside. It auto-bans IPs that generate too many failed login attempts.</li>
-  <li><b>TLS 1.3</b> between the app server and the database : traffic is encrypted in transit even on the internal network.</li>
+  <li><b>TLS 1.3</b> between the app server and the database : traffic is encrypted in transit.</li>
 </ul>
 
 > **Why TLS on an internal network?** VirtualBox's host-only network isn't encrypted. If someone compromises a VM and sniffs traffic, they see everything in plaintext without TLS (try it with Wireshark), means not trusting the network even when it's yours.
 
 
-<h2> TP2 — LUKS disk encryption</h2>
+<h2> Part2 : LUKS disk encryption</h2>
 
 
 <p>
-The threat scenario: someone copies the <code>.vdi</code> file (the VM's virtual disk) and analyzes it offline. Without encryption, every record in the database is readable. With LUKS, it's completely unreadable without the passphrase — even with direct access to the raw disk.
+The threat scenario: someone copies the <code>.vdi</code> file (the VM's virtual disk) and analyzes it offline. Without encryption, every record in the database is readable. With LUKS, it becomes completely unreadable without the passphrase, even with direct access to the raw disk.
 </p>
 
 <p>
-Rather than encrypting the entire system disk (complex, risky on an existing VM), a <b>dedicated secondary disk</b> was added to the database VM and encrypted with LUKS. This disk stores only the PostgreSQL data directory — clean, targeted, easy to audit.
+Rather than encrypting the entire system disk (complex, risky on an existing VM), a <b>dedicated secondary disk</b> was added to the database VM and encrypted with LUKS. This disk stores only the PostgreSQL data directory —> clean, targeted, easy to audit.
 </p>
 
 <h4>Cryptographic parameters</h4>
@@ -109,7 +109,7 @@ Cipher:   AES-XTS-plain64  (512-bit key)
 PBKDF:    Argon2id
 ```
 
-<p><b>Argon2id</b> is a memory-hard key derivation function — intentionally slow and RAM-intensive, which makes dictionary attacks very costly even with dedicated hardware.</p>
+<p><b>Argon2id</b> is a memory-hard key derivation function : intentionally slow and RAM-intensive, which makes dictionary attacks very costly even with dedicated hardware.</p>
 
 <h4>What LUKS protects (and what it doesn't)</h4>
 
@@ -124,7 +124,7 @@ PBKDF:    Argon2id
   </tr>
 </table>
 
-<p>LUKS is one layer — not the whole answer.</p>
+<p>LUKS is one layer, not the whole answer.</p>
 
 
 <h2> The full picture</h2>
