@@ -1,10 +1,8 @@
 <h1 align="center">🔒 Lab 2 — LUKS Disk Encryption</h1>
 
 <p align="center">
-  <i>Because network security alone isn't enough if someone can just walk away with the disk.</i>
+  <i>Because network security alone isn't enough if someone can just walk away with the disk.🚶🏻‍♂️‍➡️🚶🏻‍♂️‍➡️</i>
 </p>
-
----
 
 <h2>🎯 Goal</h2>
 
@@ -12,11 +10,9 @@
 Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab 1. The target is the database server — identified as the most critical asset — using LUKS disk encryption on a dedicated secondary disk.
 </p>
 
----
+<h2> Risk analysis first</h2>
 
-<h2>🔎 Risk analysis first</h2>
-
-<p>Before any technical implementation, a risk analysis was done to identify which component actually needed encryption.</p>
+<p>Before any technical implementation, a risk analysis has to be done to identify which component actually needs encryption.</p>
 
 <p>The main threat scenario considered:</p>
 <ul>
@@ -35,17 +31,17 @@ Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab
   </thead>
   <tbody>
     <tr>
-      <td>🛡️ Bastion</td>
+      <td> Bastion</td>
       <td>SSH config, logs</td>
       <td>Low data impact — reconstructible</td>
     </tr>
     <tr>
-      <td>⚙️ App Server</td>
+      <td> App Server</td>
       <td>Code, config files</td>
       <td>Reconstructible from source</td>
     </tr>
     <tr>
-      <td>🗄️ <b>Database</b></td>
+      <td> <b>Database</b></td>
       <td><b>Persistent data, potentially sensitive</b></td>
       <td><b>Irreversible — data is gone</b></td>
     </tr>
@@ -54,9 +50,7 @@ Add a layer of <b>data-at-rest protection</b> to the infrastructure built in Lab
 
 <p>The database was the clear priority. The bastion was also used as a test machine to validate the approach before applying it to the most critical component.</p>
 
----
-
-<h2>🏗️ Architecture choice — selective encryption</h2>
+<h2> Architecture choice — selective encryption</h2>
 
 <p>Three approaches were considered:</p>
 
@@ -86,29 +80,18 @@ Key size:  512 bits
 PBKDF:     Argon2id
 ```
 
-<p><b>Why Argon2id?</b> It's a memory-hard key derivation function — intentionally slow and RAM-intensive. Even with dedicated hardware, a dictionary attack against a passphrase becomes extremely costly.</p>
+<p><b>Why Argon2id?</b> It's a memory-hard key derivation function, intentionally slow and RAM-intensive. Even with dedicated hardware, a dictionary attack against a passphrase becomes extremely costly.</p>
 
-<p><b>Why AES-XTS?</b> It's the standard for disk encryption — designed specifically to handle the structure of block storage, resistant to pattern analysis across sectors.</p>
+<p><b>Why AES-XTS?</b> It's the standard mode for disk encryption : designed specifically to handle the structure of block storage, resistant to pattern analysis across sectors.</p>
 
 ---
 
 <h2>⚙️ How it works at runtime</h2>
 
 <p>
-LUKS sits between the physical disk and the filesystem. When the VM starts, an administrator provides the passphrase. Argon2id derives the encryption key, the kernel exposes a decrypted virtual device under <code>/dev/mapper/luks_db</code>, and PostgreSQL reads and writes to it normally — completely unaware there's encryption underneath.
+LUKS sits between the physical disk and the filesystem. When the VM starts, an administrator provides the passphrase. Argon2id derives the encryption key, the kernel exposes a decrypted virtual device under <code>/dev/mapper/luks_db</code>, and PostgreSQL reads and writes to it normally, completely unaware there's encryption underneath.
 </p>
 
-```
-[Raw disk /dev/sdb — fully encrypted]
-         │
-         ▼  cryptsetup open (passphrase required)
-[Virtual device /dev/mapper/luks_db — decrypted]
-         │
-         ▼  mounted on /var/lib/postgresql
-[PostgreSQL — works normally, sees nothing]
-```
-
----
 
 <h2>🗝️ Key management</h2>
 
@@ -130,27 +113,21 @@ sudo systemctl start postgresql
 
 ---
 
-<h2>✅ What LUKS protects — and what it doesn't</h2>
+<h2> What LUKS protects.. and what it doesn't</h2>
 
 <table>
   <tr>
-    <td>✅ <b>Protects against</b></td>
+    <td> <b>Protects against</b></td>
     <td>Theft of the VM or virtual disk file · Offline disk analysis · Physical access to storage media</td>
   </tr>
   <tr>
-    <td>❌ <b>Does NOT protect against</b></td>
+    <td> <b>! Does NOT protect against !</b></td>
     <td>Network attacks · Application vulnerabilities · A legitimate user with elevated privileges · Any attack while the volume is already mounted</td>
   </tr>
 </table>
 
 <p>LUKS is one layer in a defense-in-depth strategy — not a complete solution on its own. Once the volume is mounted and the system is running, data flows normally. The other layers from Lab 1 (bastion, firewall, TLS) cover the threats LUKS doesn't.</p>
 
----
 
-<h2>⚠️ Challenges encountered</h2>
-
-<p><b>PostgreSQL unreachable after cluster recreation</b> — after mounting the LUKS volume and restarting PostgreSQL, the service was only listening on <code>127.0.0.1</code> (default behavior after cluster creation). Fixed by updating <code>listen_addresses</code> in <code>postgresql.conf</code> and adding a rule in <code>pg_hba.conf</code> to allow the app server's IP.</p>
-
----
 
 <p align="center"><i>← <a href="../1-%20Infrastructure/README.md">Lab 1 — Infrastructure</a> · <a href="../README.md">Back to main README →</a></i></p>
