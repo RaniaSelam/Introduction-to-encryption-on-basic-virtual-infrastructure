@@ -1,5 +1,5 @@
 <h1 align="center">🛡️ Part 1 — Network segmentation & SSH hardening</h1>
-
+<br><br><br>
 <h2> Goal</h2>
 
 <p>
