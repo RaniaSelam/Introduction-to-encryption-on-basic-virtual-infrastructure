@@ -147,4 +147,4 @@ Communications between the app server and the database are encrypted with <b>TLS
 
 
 
-<p align="center"><i>← <a href="../README.md">Back to main README</a> · <a href="../2-%20Luks%20Encryption/README.md">Lab 2 — LUKS Encryption →</a></i></p>
+<p align="center"><i>← <a href="../README.md">Back to main README</a> · <a href="../Part2-%20Luks%20Encryption/README.md">Lab 2 — LUKS Encryption →</a></i></p>
